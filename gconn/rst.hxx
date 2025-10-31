@@ -94,7 +94,6 @@ float construct_st(graph_data& d_input) {
     CUDA_CHECK(cudaDeviceSynchronize(), "Failed to synchronize union_find_gpu_COO");
     
     auto dur = Timer.stop();
-    add_function_time("AST Construction", dur);
     
     d_input.root = 0;
     auto euler_ms = cuda_euler_tour(st_edges.get(), numVert, d_input.root, d_input);

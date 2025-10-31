@@ -42,6 +42,6 @@ int main(int argc, char const *argv[]) {
     CUDA_CHECK(cudaMemcpy(d_input.edgelist, g.getEdgelist(), bytes, cudaMemcpyHostToDevice), "Failed to copy edgelist to device");
 
     auto st_time = construct_st(d_input);
-    
+    std::cout << "GCONN took: " << st_time << " ms\n";
     return EXIT_SUCCESS;
 }
