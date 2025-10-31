@@ -10,14 +10,14 @@ TARGET = main
 DEBUG_TARGET = main_debug
 
 # Source files
-SRCS = main.cu euler.cu tags.cu sparse_table_max.cu sparse_table_min.cu
+SRCS = main.cu euler.cu 
 
 # Object files
 OBJS = $(SRCS:.cu=.o)
 DEBUG_OBJS = $(SRCS:.cu=_debug.o)
 
 # Header dependencies
-HEADERS = common.hxx euler.hxx graph.hxx rst.hxx list_ranking.hxx tags.hxx sparse_table_max.hxx sparse_table_min.hxx cc.hxx
+HEADERS = common.hxx euler.hxx graph.hxx rst.hxx list_ranking.hxx
 
 # Default target
 all: $(TARGET)
