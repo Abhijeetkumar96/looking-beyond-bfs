@@ -8,9 +8,7 @@ int numVert, numEdges;
 std::vector<int> u_arr, v_arr;
 
 static void csr_to_coo(const std::vector<long>& vertices,
-                       const std::vector<int>& edges,
-                       std::vector<int>& u_out,
-                       std::vector<int>& v_out) {
+                       const std::vector<int>& edges) {
 
     u_arr.reserve(edges.size() / 2);
     v_arr.reserve(edges.size() / 2);
