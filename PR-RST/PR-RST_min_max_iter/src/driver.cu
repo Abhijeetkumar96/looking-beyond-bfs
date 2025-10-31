@@ -89,13 +89,13 @@ int main(int argc, char *argv[])
             std::cout << "Detected edge list format (" << ext << ").\n";
             read_edgelist(filename);
         } 
-        else if (ext == ".graph" || ext == ".bin" || ext == ".ecl") {
+        else if (ext == ".graph" || ext == ".bin" || ext == ".egr") {
             std::cout << "Detected ECL graph format (" << ext << ").\n";
             readECLgraph(filename);
         } 
         else {
             std::cerr << "Unknown file extension '" << ext 
-                      << "'. Expected .txt/.edges/.el for edge list or .graph/.bin/.ecl for ECL format.\n";
+                      << "'. Expected .txt/.edges/.el for edge list or .graph/.bin/.egr for ECL format.\n";
             return EXIT_FAILURE;
         }
     } catch (const std::exception& e) {
