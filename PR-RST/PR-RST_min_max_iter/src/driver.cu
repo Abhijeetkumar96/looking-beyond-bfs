@@ -59,12 +59,12 @@ void read_edgelist(std::string filename) {
     }
 
     inFile >> numVert >> numEdges;
-    u_arr.resize(m);
-    v_arr.resize(m);
+    u_arr.resize(numEdges);
+    v_arr.resize(numEdges);
 
     int u, v;
 
-    for(long i = 0; i < m; ++i) {
+    for(long i = 0; i < numEdges; ++i) {
     	inFile >> u >> v;
     	if(u < v) {
             u_arr.push_back(u);
