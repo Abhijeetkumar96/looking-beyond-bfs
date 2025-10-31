@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "pr_rst/rootedSpanningTreePR.h"
 
