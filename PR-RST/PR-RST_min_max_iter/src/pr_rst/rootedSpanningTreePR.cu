@@ -218,16 +218,13 @@ std::vector<int> RootedSpanningTree(const std::vector<int> &u_arr, const std::ve
 		// break;
 	}
 	
-	// cudaMemcpy(d_parent_ptr,d_next_ptr, size, cudaMemcpyDeviceToDevice);
 	auto end = std::chrono::high_resolution_clock::now();
-	// auto end = std::chrono::high_resolution_clock::now();
-	// auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	
 	auto duration  = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 	std::vector<int> h_parent(n),h_rep(n);
 	cudaMemcpy(h_parent.data(), d_parent_ptr, n*sizeof(int), cudaMemcpyDeviceToHost);
 	cudaMemcpy(h_rep.data(), d_ptr, n*sizeof(int), cudaMemcpyDeviceToHost);
-	// thrust::copy(d_parent.begin(), d_parent.end(), h_parent.begin());
-	// thrust::copy(rep.begin(), rep.end(), h_rep.begin());
+	
 
 #ifdef DEBUG
 	std::cout << "parent array : \n";
@@ -247,10 +244,8 @@ std::vector<int> RootedSpanningTree(const std::vector<int> &u_arr, const std::ve
 	std::cout << std::endl;
 #endif
 	std::cout << "Number of iterations taken: "<<iter_number <<"\n";
-	std::cout << "Duration in milliseconds: " << duration << "ms\n";
-	// std::cout << "Duration in milliseconds for grafting: " << grafting_time << "ms\n";
-	// std::cout << "Duration in milliseconds for reroot: " << reroot_time << "ms\n";
-	// std::cout << "Duration in milliseconds for shortcutting: " << shortcutting_time << "ms\n";
+	std::cout << "Duration in milliseconds: " << duration << " ms\n";
+	
 
 	cudaFree(d_OnPath);
 	return h_parent;
