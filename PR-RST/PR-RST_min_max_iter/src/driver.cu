@@ -11,18 +11,17 @@ static void csr_to_coo(const std::vector<long>& vertices,
                        const std::vector<int>& edges,
                        std::vector<int>& u_out,
                        std::vector<int>& v_out) {
-    u_out.clear();
-    v_out.clear();
-    u_out.reserve(edges.size() / 2);
-    v_out.reserve(edges.size() / 2);
+
+    u_arr.reserve(edges.size() / 2);
+    v_arr.reserve(edges.size() / 2);
 
     const int n = static_cast<int>(vertices.size()) - 1;
     for (int i = 0; i < n; ++i) {
         for (long j = vertices[i]; j < vertices[i + 1]; ++j) {
             int nbr = edges[j];
             if (i < nbr) {          // keep one direction
-                u_out.push_back(i);
-                v_out.push_back(nbr);
+                u_arr.push_back(i);
+                v_arr.push_back(nbr);
             }
         }
     }
@@ -52,7 +51,7 @@ void readECLgraph(const std::string& filename) {
     numEdges = static_cast<int>(edges.size());
 
     // Build COO once we have CSR
-    csr_to_coo(vertices, edges, u_arr, v_arr);
+    csr_to_coo(vertices, edges);
 }
 
 void read_edgelist(std::string filename) {
