@@ -218,6 +218,9 @@ void adam_polak_bfs(int n, long m, long* d_nodes, int* d_edges, int* u, int* v) 
         "Failed to set device memory for d_row_indices");
         CUDA_CHECK(cudaDeviceSynchronize(), "Failed to synchronize");
 
+
+    auto start = std::chrono::high_resolution_clock::now();
+
     while(h_nodefrontier_size[0] > 0) {
 
         level[0]++;
@@ -262,6 +265,11 @@ void adam_polak_bfs(int n, long m, long* d_nodes, int* d_edges, int* u, int* v) 
         m);
     CUDA_CHECK(cudaDeviceSynchronize(), "Failed to synchronize");
 
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+    std::cout << "Execution time: " << duration.count() << " ms" << std::endl;
+    
     CUDA_CHECK(cudaMemcpy(d_parent + root, &root, sizeof(int), cudaMemcpyHostToDevice), 
         "Failed to copy d_parent value");
 
