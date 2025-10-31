@@ -55,7 +55,7 @@ void readECLgraph(const std::string& filename) {
     csr_to_coo(vertices, edges, u_arr, v_arr);
 }
 
-void read_edgelist(filename) {
+void read_edgelist(std::string filename) {
 	std::ifstream inFile(filename, std::ios::binary);
     if (!inFile) {
         throw std::runtime_error("Error opening file: " + filename);
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-        std::string filename = argv[1];
+    std::string filename = argv[1];
     std::filesystem::path file_path(filename);
     std::string ext = file_path.extension().string();
 
