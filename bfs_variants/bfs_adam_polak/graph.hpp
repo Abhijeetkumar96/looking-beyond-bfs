@@ -153,7 +153,7 @@ private:
             }
         }    
 
-        assert(ctr == numEdges);
+        assert(ctr == numEdges/2);
     }
 
     std::string getFileExtension(const std::string& filename) {
