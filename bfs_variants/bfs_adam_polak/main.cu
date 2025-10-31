@@ -9,7 +9,7 @@
 
 #include "graph.hpp"
 
-#define DEBUG
+// #define DEBUG
 
 inline void check_for_error(cudaError_t error, const std::string& message, const std::string& file, int line) noexcept {
     if (error != cudaSuccess) {
