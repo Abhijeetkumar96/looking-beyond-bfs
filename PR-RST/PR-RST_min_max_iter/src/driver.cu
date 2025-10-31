@@ -57,9 +57,8 @@ void read_edgelist(std::string filename) {
     if (!inFile) {
         throw std::runtime_error("Error opening file: " + filename);
     }
-    int n;
-    long m;
-    inFile >> n >> m;
+
+    inFile >> numVert >> numEdges;
     u_arr.resize(m);
     v_arr.resize(m);
 
