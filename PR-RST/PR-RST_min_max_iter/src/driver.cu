@@ -1,109 +1,76 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <cuda.h>
-#include <algorithm>
-#include <random>
-#include <chrono>
-#include <utility>
-#include <filesystem>
-#include <thrust/device_vector.h>
-
-#include "pr_rst/rootedSpanningTreePR.h"
-#include "verification/verifySol.h"
-#include "cc/connected_comp.h"
-#include "util/utility.h"
-
-// Global variables needed for the helper functions
-std::filesystem::path filepath;
-
+// --- keep these globals as-is ---
 int numVert, numEdges;
 std::vector<int> u_arr, v_arr;
 
-void csr_to_coo() {
-    size_t bytes = (numEdges / 2) * sizeof(uint64_t);
+// Convert CSR (vertices, edges) -> COO (u_arr, v_arr) for an undirected graph
+// Keeps only (u,v) with u < v to store each undirected edge once.
+static void csr_to_coo(const std::vector<long>& vertices,
+                       const std::vector<int>& edges,
+                       std::vector<int>& u_out,
+                       std::vector<int>& v_out) {
+    u_out.clear();
+    v_out.clear();
+    u_out.reserve(edges.size() / 2);
+    v_out.reserve(edges.size() / 2);
 
-    for (int i = 0; i < numVert; ++i) {
+    const int n = static_cast<int>(vertices.size()) - 1;
+    for (int i = 0; i < n; ++i) {
         for (long j = vertices[i]; j < vertices[i + 1]; ++j) {
-            if (i < edges[j]) {
-                u_arr.push_back(i);
-                v_arr.push_back(edges[j]);
+            int nbr = edges[j];
+            if (i < nbr) {          // keep one direction
+                u_out.push_back(i);
+                v_out.push_back(nbr);
             }
         }
     }
 }
 
-void readEdgeList() {
-    std::ifstream inFile(filepath);
-    if (!inFile) {
-        throw std::runtime_error("Error opening file: " + filepath.string());
-    }
-    inFile >> numVert >> numEdges;
-
-    size_t bytes = (numEdges / 2) * sizeof(uint64_t);
-	u_arr.resize(numEdges / 2);
-	v_arr.resize(numEdges / 2);
-    long ctr = 0;
-    int u, v;
-    for (long i = 0; i < numEdges; ++i) {
-        inFile >> u >> v;
-        if (u < v) {
-        	u_arr[ctr] = u;
-        	v_arr[ctr] = v;
-            ctr++;
-        }
-    }
-    assert(ctr == numEdges / 2);
-}   
-
-void readECLgraph(std::string filename) {
-
+void readECLgraph(const std::string& filename) {
     std::ifstream inFile(filename, std::ios::binary);
     if (!inFile) {
         throw std::runtime_error("Error opening file: " + filename);
     }
-    size_t size;
-	
-	std::vector<long> vertices;
-	std::vector<int> edges;
 
-    inFile.read(reinterpret_cast<char*>(&size), sizeof(size));
+    size_t size = 0;
+    std::vector<long> vertices;
+    std::vector<int>  edges;
+
+    inFile.read(reinterpret_cast<char*>(&size), sizeof(size));   // # of vertices entries
     vertices.resize(size);
-    inFile.read(reinterpret_cast<char*>(&size), sizeof(size));
+    inFile.read(reinterpret_cast<char*>(&size), sizeof(size));   // # of edges entries
     edges.resize(size);
 
-    inFile.read(reinterpret_cast<char*>(vertices.data()), vertices.size() * sizeof(long));
-    inFile.read(reinterpret_cast<char*>(edges.data()), edges.size() * sizeof(int));
+    inFile.read(reinterpret_cast<char*>(vertices.data()),
+                vertices.size() * sizeof(long));
+    inFile.read(reinterpret_cast<char*>(edges.data()),
+                edges.size() * sizeof(int));
 
-    numVert = vertices.size() - 1;
-    numEdges = edges.size();
+    numVert = static_cast<int>(vertices.size()) - 1;
+    numEdges = static_cast<int>(edges.size());
 
-    csr_to_coo();
+    // Build COO once we have CSR
+    csr_to_coo(vertices, edges, u_arr, v_arr);
 }
 
 int main(int argc, char *argv[])
 {
-	if (argc < 2)
-	{
-		std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
-		return EXIT_FAILURE;
-	}
+    if (argc < 2) {
+        std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
+        return EXIT_FAILURE;
+    }
 
-	std::string filename = argv[1];
-	readECLgraph(filename);
-	
-	std::cout << "No. of vertices = " << numVert << std::endl;
-	std::cout << "No. of edges = " << numEdges << std::endl;
+    std::string filename = argv[1];
+    readECLgraph(filename);
 
-	// Compute rooted spanning tree
-	std::cout << "Computing rooted spanning tree...\n";
-	std::vector<int> parent = RootedSpanningTree(u_arr, v_arr, numVert);
-	
-	std::cout << "Rooted spanning tree computation completed\n";
+    std::cout << "No. of vertices = " << numVert << std::endl;
+    std::cout << "No. of edges = " << numEdges << std::endl;
 
-	#ifdef DEBUG
-		printArr(parent, n, 10);
-	#endif
+    std::cout << "Computing rooted spanning tree...\n";
+    std::vector<int> parent = RootedSpanningTree(u_arr, v_arr, numVert);
+    std::cout << "Rooted spanning tree computation completed\n";
 
-	return EXIT_SUCCESS;
+#ifdef DEBUG
+    // printArr(parent, numVert, 10); // if you have this helper, use numVert (not n)
+#endif
+    return EXIT_SUCCESS;
 }
