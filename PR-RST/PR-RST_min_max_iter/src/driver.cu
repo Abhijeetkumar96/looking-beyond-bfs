@@ -1,4 +1,6 @@
-// --- keep these globals as-is ---
+#include <iostream>
+#include <vector>
+
 int numVert, numEdges;
 std::vector<int> u_arr, v_arr;
 
