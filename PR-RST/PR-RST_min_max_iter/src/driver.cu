@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
     try {
         if (ext == ".txt" || ext == ".edges" || ext == ".el") {
             std::cout << "Detected edge list format (" << ext << ").\n";
-            readEdgeList(filename);
+            read_edgelist(filename);
         } 
         else if (ext == ".graph" || ext == ".bin" || ext == ".ecl") {
             std::cout << "Detected ECL graph format (" << ext << ").\n";
