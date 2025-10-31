@@ -6,12 +6,80 @@
 #include <random>
 #include <chrono>
 #include <utility>
+#include <filesystem>
 #include <thrust/device_vector.h>
 
 #include "pr_rst/rootedSpanningTreePR.h"
 #include "verification/verifySol.h"
 #include "cc/connected_comp.h"
 #include "util/utility.h"
+
+// Global variables needed for the helper functions
+std::filesystem::path filepath;
+
+int numVert, numEdges;
+std::vector<int> u_arr, v_arr;
+
+void csr_to_coo() {
+    size_t bytes = (numEdges / 2) * sizeof(uint64_t);
+
+    for (int i = 0; i < numVert; ++i) {
+        for (long j = vertices[i]; j < vertices[i + 1]; ++j) {
+            if (i < edges[j]) {
+                u_arr.push_back(i);
+                v_arr.push_back(edges[j]);
+            }
+        }
+    }
+}
+
+void readEdgeList() {
+    std::ifstream inFile(filepath);
+    if (!inFile) {
+        throw std::runtime_error("Error opening file: " + filepath.string());
+    }
+    inFile >> numVert >> numEdges;
+
+    size_t bytes = (numEdges / 2) * sizeof(uint64_t);
+	u_arr.resize(numEdges / 2);
+	v_arr.resize(numEdges / 2);
+    long ctr = 0;
+    int u, v;
+    for (long i = 0; i < numEdges; ++i) {
+        inFile >> u >> v;
+        if (u < v) {
+        	u_arr[ctr] = u;
+        	v_arr[ctr] = v;
+            ctr++;
+        }
+    }
+    assert(ctr == numEdges / 2);
+}   
+
+void readECLgraph(std::string filename) {
+
+    std::ifstream inFile(filename, std::ios::binary);
+    if (!inFile) {
+        throw std::runtime_error("Error opening file: " + filename);
+    }
+    size_t size;
+	
+	std::vector<long> vertices;
+	std::vector<int> edges;
+
+    inFile.read(reinterpret_cast<char*>(&size), sizeof(size));
+    vertices.resize(size);
+    inFile.read(reinterpret_cast<char*>(&size), sizeof(size));
+    edges.resize(size);
+
+    inFile.read(reinterpret_cast<char*>(vertices.data()), vertices.size() * sizeof(long));
+    inFile.read(reinterpret_cast<char*>(edges.data()), edges.size() * sizeof(int));
+
+    numVert = vertices.size() - 1;
+    numEdges = edges.size();
+
+    csr_to_coo();
+}
 
 int main(int argc, char *argv[])
 {
@@ -22,56 +90,20 @@ int main(int argc, char *argv[])
 	}
 
 	std::string filename = argv[1];
-	std::ifstream inputFile(filename);
-	if (!inputFile)
-	{
-		std::cerr << "Unable to open the file for reading.\n";
-		return EXIT_FAILURE;
-	}
-
-	int n, e;
-	inputFile >> n >> e;
-
-
-	std::cout << "No. of vertices = " << n << std::endl;
-	std::cout << "No. of edges = " << e << std::endl;
-
-	int u, v;
-	std::vector<int> u_arr;
-	std::vector<int> v_arr;
-	std::vector<std::vector<int>> adjlist(n);
-
-	// std::vector<std::pair<int, int>> edge_stream;
-	std::cout<<"Reading input\n";
-	for (int i = 0; i < e; ++i)
-	{
-		inputFile >> u >> v;
-		adjlist[u].push_back(v);
-		u_arr.push_back(u);
-		v_arr.push_back(v);
-		// v_arr.push_back(u);
-		// u_arr.push_back(v);
-		// edge_stream.push_back(std::make_pair(v, u));
-	}
-
-	std::cout<<"Input reading done\n";
-
-	// int comp_count = findConnected(adjlist, n);
-
-	// std::cout<<"Number of connected components : "<<comp_count<<"\n";
-	std::vector<int> parent = RootedSpanningTree(u_arr, v_arr, n);
+	readECLgraph(filename);
 	
+	std::cout << "No. of vertices = " << numVert << std::endl;
+	std::cout << "No. of edges = " << numEdges << std::endl;
+
+	// Compute rooted spanning tree
+	std::cout << "Computing rooted spanning tree...\n";
+	std::vector<int> parent = RootedSpanningTree(u_arr, v_arr, numVert);
+	
+	std::cout << "Rooted spanning tree computation completed\n";
+
 	#ifdef DEBUG
-		printArr(parent,n,10);
+		printArr(parent, n, 10);
 	#endif
-	
-	// if(validateRST(parent,comp_count))
-	// {
-	// 	std::cout<<"Validation success"<<std::endl;
-	// }
-	// else
-	// {
-	// 	std::cout<<"Validation failure"<<std::endl;
-	// 	exit(1);
-	// }
+
+	return EXIT_SUCCESS;
 }
