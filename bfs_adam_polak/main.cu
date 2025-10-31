@@ -321,10 +321,10 @@ int main(int argc, char* argv[]) {
     std::string filename = argv[1];
     graph G(filename);
 
-    std::cout << "\n\n";
-    std::cout << "filename: " << filename << std::endl;
+    // std::cout << "\n\n";
+    // std::cout << "filename: " << filename << std::endl;
     
-    std::cout << "numVertices : " << G.numVert << ", numEdges : " << G.numEdges << std::endl;
+    // std::cout << "numVertices : " << G.numVert << ", numEdges : " << G.numEdges << std::endl;
     int numVert = G.numVert;
     long numEdges = G.numEdges;
 
