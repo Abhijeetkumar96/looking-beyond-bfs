@@ -83,20 +83,22 @@ private:
             throw std::runtime_error("Error opening file: " + filepath);
         }
 
-        // Reading sizes
-        size_t size;
-        inFile.read(reinterpret_cast<char*>(&size), sizeof(size));
+        size_t size = 0;
+
+        inFile.read(reinterpret_cast<char*>(&size), sizeof(size));   // # of vertices entries
         vertices.resize(size);
-        inFile.read(reinterpret_cast<char*>(&size), sizeof(size));
+        inFile.read(reinterpret_cast<char*>(&size), sizeof(size));   // # of edges entries
         edges.resize(size);
 
-        // Reading data
-        inFile.read(reinterpret_cast<char*>(vertices.data()), vertices.size() * sizeof(long));
-        inFile.read(reinterpret_cast<char*>(edges.data()), edges.size() * sizeof(int));
+        inFile.read(reinterpret_cast<char*>(vertices.data()),
+                    vertices.size() * sizeof(long));
+        inFile.read(reinterpret_cast<char*>(edges.data()),
+                    edges.size() * sizeof(int));
 
-        numVert = vertices.size() - 1;
-        numEdges = edges.size();
+        numVert = static_cast<int>(vertices.size()) - 1;
+        numEdges = static_cast<int>(edges.size());
 
+        std::cout << "numVert: " << numVert << " and numEdges: " << numEdges << std::endl;
         csrToList();
     }
 
