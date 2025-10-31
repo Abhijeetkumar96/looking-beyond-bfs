@@ -1,13 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 #include <vector>
 #include "pr_rst/rootedSpanningTreePR.h"
 
 int numVert, numEdges;
 std::vector<int> u_arr, v_arr;
 
-// Convert CSR (vertices, edges) -> COO (u_arr, v_arr) for an undirected graph
-// Keeps only (u,v) with u < v to store each undirected edge once.
 static void csr_to_coo(const std::vector<long>& vertices,
                        const std::vector<int>& edges,
                        std::vector<int>& u_out,
@@ -56,6 +55,28 @@ void readECLgraph(const std::string& filename) {
     csr_to_coo(vertices, edges, u_arr, v_arr);
 }
 
+void read_edgelist(filename) {
+	std::ifstream inFile(filename, std::ios::binary);
+    if (!inFile) {
+        throw std::runtime_error("Error opening file: " + filename);
+    }
+    int n;
+    long m;
+    inFile >> n >> m;
+    u_arr.resize(m);
+    v_arr.resize(m);
+
+    int u, v;
+
+    for(long i = 0; i < m; ++i) {
+    	inFile >> u >> v;
+    	if(u < v) {
+            u_out.push_back(u);
+            v_out.push_back(v);
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
     if (argc < 2) {
@@ -63,8 +84,28 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    std::string filename = argv[1];
-    readECLgraph(filename);
+        std::string filename = argv[1];
+    std::filesystem::path file_path(filename);
+    std::string ext = file_path.extension().string();
+
+    try {
+        if (ext == ".txt" || ext == ".edges" || ext == ".el") {
+            std::cout << "Detected edge list format (" << ext << ").\n";
+            readEdgeList(filename);
+        } 
+        else if (ext == ".graph" || ext == ".bin" || ext == ".ecl") {
+            std::cout << "Detected ECL graph format (" << ext << ").\n";
+            readECLgraph(filename);
+        } 
+        else {
+            std::cerr << "Unknown file extension '" << ext 
+                      << "'. Expected .txt/.edges/.el for edge list or .graph/.bin/.ecl for ECL format.\n";
+            return EXIT_FAILURE;
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
 
     std::cout << "No. of vertices = " << numVert << std::endl;
     std::cout << "No. of edges = " << numEdges << std::endl;
