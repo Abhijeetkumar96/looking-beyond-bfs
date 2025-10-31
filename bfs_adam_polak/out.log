@@ -1,0 +1,117 @@
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/as-Skitter.egr
+numVert: 1696415 and numEdges: 22192106
+Execution time: 47 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/com-Orkut.egr
+numVert: 3072441 and numEdges: 234370166
+Execution time: 35 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/coPapersCiteseer.egr
+numVert: 434102 and numEdges: 32073440
+Execution time: 6 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/coPapersDBLP.egr
+numVert: 540486 and numEdges: 30491458
+Execution time: 5 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/delaunay_n24.egr
+numVert: 16777216 and numEdges: 100663202
+Execution time: 138 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/eu-2005.egr
+numVert: 862664 and numEdges: 32276936
+Execution time: 6 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/europe_osm.egr
+numVert: 50912018 and numEdges: 108109320
+Execution time: 1487 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/GAP-road.egr
+numVert: 23947347 and numEdges: 57708624
+Execution time: 477 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/germany_osm.egr
+numVert: 11548845 and numEdges: 24738362
+Execution time: 319 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/higgs-twitter.egr
+numVert: 456626 and numEdges: 25017136
+Execution time: 13 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/hollywood-2009.egr
+numVert: 1139905 and numEdges: 112840436
+Execution time: 2527 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/hugebubbles-00020.egr
+numVert: 21198119 and numEdges: 63580358
+Execution time: 371 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/in-2004.egr
+numVert: 1382908 and numEdges: 27183212
+Execution time: 17 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/indochina-2004.egr
+numVert: 7414866 and numEdges: 301970226
+Execution time: 74 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kmer_U1a.egr
+numVert: 67716231 and numEdges: 138866824
+Execution time: 4375 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kmer_V2a.egr
+numVert: 55042369 and numEdges: 117248284
+Execution time: 992 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kron_g500-logn18.egr
+numVert: 262144 and numEdges: 21269364
+Execution time: 3648 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kron_g500-logn19.egr
+numVert: 524288 and numEdges: 43791852
+Execution time: 7076 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kron_g500-logn20.egr
+numVert: 1048576 and numEdges: 89745562
+Execution time: 14352 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kron_g500-logn21.egr
+numVert: 2097152 and numEdges: 183188180
+Execution time: 31712 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/ljournal-2008.egr
+numVert: 5363260 and numEdges: 99028690
+Execution time: 24 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/rgg_n_2_23_s0.egr
+numVert: 8388608 and numEdges: 127002794
+Execution time: 149 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/rgg_n_2_24_s0.egr
+numVert: 16777216 and numEdges: 265114402
+Execution time: 226 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/road_usa.egr
+numVert: 23947347 and numEdges: 57708624
+Execution time: 552 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/soc-LiveJournal1.egr
+numVert: 4847571 and numEdges: 85706224
+Execution time: 188 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/sx-stackoverflow.egr
+numVert: 2601977 and numEdges: 56414194
+Execution time: 2236 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/uk-2002.egr
+numVert: 18520486 and numEdges: 523651232
+Execution time: 2565 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/web-BerkStan.egr
+numVert: 685230 and numEdges: 13300290
+Execution time: 69 ms
+------------------------------------------------------------
+Running BFS Adam on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/wiki-topcats.egr
+numVert: 1791489 and numEdges: 50888414
+Execution time: 9 ms
+------------------------------------------------------------
+All runs completed.
