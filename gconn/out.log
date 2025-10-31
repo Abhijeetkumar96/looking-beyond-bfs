@@ -1,0 +1,146 @@
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/as-Skitter.egr
+Number of vertices: 1696415
+Number of edges: 11096053
+GCONN took: 2.16883 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/com-Orkut.egr
+Number of vertices: 3072441
+Number of edges: 117185083
+GCONN took: 6.28336 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/coPapersCiteseer.egr
+Number of vertices: 434102
+Number of edges: 16036720
+GCONN took: 0.98816 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/coPapersDBLP.egr
+Number of vertices: 540486
+Number of edges: 15245729
+GCONN took: 1.00246 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/delaunay_n24.egr
+Number of vertices: 16777216
+Number of edges: 50331601
+GCONN took: 42.0453 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/eu-2005.egr
+Number of vertices: 862664
+Number of edges: 16138468
+GCONN took: 1.75824 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/europe_osm.egr
+Number of vertices: 50912018
+Number of edges: 54054660
+GCONN took: 114.142 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/GAP-road.egr
+Number of vertices: 23947347
+Number of edges: 28854312
+GCONN took: 51.0106 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/germany_osm.egr
+Number of vertices: 11548845
+Number of edges: 12369181
+GCONN took: 25.1433 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/higgs-twitter.egr
+Number of vertices: 456626
+Number of edges: 12508568
+GCONN took: 0.975872 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/hollywood-2009.egr
+Number of vertices: 1139905
+Number of edges: 56420218
+GCONN took: 2.33382 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/hugebubbles-00020.egr
+Number of vertices: 21198119
+Number of edges: 31790179
+GCONN took: 69.1915 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/in-2004.egr
+Number of vertices: 1382908
+Number of edges: 13591606
+GCONN took: 2.04496 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/indochina-2004.egr
+Number of vertices: 7414866
+Number of edges: 150985113
+GCONN took: 18.1043 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kmer_U1a.egr
+Number of vertices: 67716231
+Number of edges: 69433412
+GCONN took: 404.516 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kmer_V2a.egr
+Number of vertices: 55042369
+Number of edges: 58624142
+GCONN took: 307.318 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kron_g500-logn18.egr
+Number of vertices: 262144
+Number of edges: 10634682
+GCONN took: 0.920832 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kron_g500-logn19.egr
+Number of vertices: 524288
+Number of edges: 21895926
+GCONN took: 8.50653 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kron_g500-logn20.egr
+Number of vertices: 1048576
+Number of edges: 44872781
+GCONN took: 15.7932 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/kron_g500-logn21.egr
+Number of vertices: 2097152
+Number of edges: 91594090
+GCONN took: 10.9765 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/ljournal-2008.egr
+Number of vertices: 5363260
+Number of edges: 49514345
+GCONN took: 11.7034 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/rgg_n_2_23_s0.egr
+Number of vertices: 8388608
+Number of edges: 63501397
+GCONN took: 23.508 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/rgg_n_2_24_s0.egr
+Number of vertices: 16777216
+Number of edges: 132557201
+GCONN took: 46.9248 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/road_usa.egr
+Number of vertices: 23947347
+Number of edges: 28854312
+GCONN took: 51.2152 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/soc-LiveJournal1.egr
+Number of vertices: 4847571
+Number of edges: 42853112
+GCONN took: 9.77594 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/sx-stackoverflow.egr
+Number of vertices: 2601977
+Number of edges: 28207097
+GCONN took: 5.51834 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/uk-2002.egr
+Number of vertices: 18520486
+Number of edges: 261825616
+GCONN took: 45.2002 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/web-BerkStan.egr
+Number of vertices: 685230
+Number of edges: 6650145
+GCONN took: 1.02691 ms
+------------------------------------------------------------
+Running Gconn on: /home/abhijeet/datasets/medium_datasets/ecl_graphs/wiki-topcats.egr
+Number of vertices: 1791489
+Number of edges: 25444207
+GCONN took: 3.14179 ms
+------------------------------------------------------------
+All runs completed.
