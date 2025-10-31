@@ -2,7 +2,7 @@
 CXX = g++
 NVCC = nvcc
 CXXFLAGS = -O3 -std=c++17 -Wall
-NVCCFLAGS = -O3 -std=c++17 -arch=sm_80  # Change the architecture flag based on your GPU
+NVCCFLAGS = -O3 -std=c++17 -arch=sm_89  # Change the architecture flag based on your GPU
 DEBUGFLAG =
 
 # Source files
