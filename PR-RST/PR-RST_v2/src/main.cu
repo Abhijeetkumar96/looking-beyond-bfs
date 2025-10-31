@@ -90,6 +90,7 @@ int main(int argc, char *argv[])
     }
 
     std::string filename = argv[1];
+    std::cout << "Processing " << filename << "\n";
     std::filesystem::path file_path(filename);
     std::string ext = file_path.extension().string();
 
@@ -125,6 +126,5 @@ int main(int argc, char *argv[])
 
 	cudaMemcpy(d_u_arr, u_arr.data(), size, cudaMemcpyHostToDevice);
 	cudaMemcpy(d_v_arr, v_arr.data(), size, cudaMemcpyHostToDevice);
-	std::cout << "Filename: " << get_filename(filename) << "\n";
-	RootedSpanningTree(d_u_arr, d_v_arr, n, e);
+	RootedSpanningTree(d_u_arr, d_v_arr, numVert, numEdges);
 }
