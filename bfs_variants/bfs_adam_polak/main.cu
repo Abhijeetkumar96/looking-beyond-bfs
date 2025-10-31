@@ -270,9 +270,9 @@ void adam_polak_bfs(int n, long m, long* d_nodes, int* d_edges, int* u, int* v) 
     // update_root_parent<<<blocksPerGrid, threadsPerBlock>>>(
     //     d_parent, d_roots, num_comps);
 
-    std::cout << "Parent array from Adam_BFS:\n";
-    print_a<<<1,1>>>(d_parent, n);
-    CUDA_CHECK(cudaDeviceSynchronize(), "Failed to synchronize");
+    // std::cout << "Parent array from Adam_BFS:\n";
+    // print_a<<<1,1>>>(d_parent, n);
+    // CUDA_CHECK(cudaDeviceSynchronize(), "Failed to synchronize");
     // std::cout << "Total elapsed time for adam mgpu_BFS: " << myTimer.getElapsedMilliseconds() << " ms" << std::endl;    
     
     #ifdef DEBUG
