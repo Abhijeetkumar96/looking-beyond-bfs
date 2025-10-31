@@ -1,22 +1,37 @@
-# Makefile for building the BFS Adam using CUDA
+# ==========================================================
+# Makefile for BFS Adam (CUDA Implementation)
+# ==========================================================
 
-# Compiler settings
-CC=nvcc
-CFLAGS=-std=c++17 -O3 -arch=sm_80
+# --- Compiler and Flags ---
+NVCC      := nvcc
+CUDA_ARCH := sm_89
+CXXFLAGS  := -std=c++17 -O3 -arch=$(CUDA_ARCH)
+
+# --- Target and Source ---
+TARGET    := bin/bfs_adam
+SOURCE    := main.cu
+
+# ==========================================================
+# Rules
+# ==========================================================
+
+# Default build rule
+all: $(TARGET)
 
 # Build target
-TARGET=bfs_adam
-
-# Source file
-SOURCE=main.cu
-
-# Build rule for the main target
 $(TARGET): $(SOURCE)
-	$(CC) $(CFLAGS) $(SOURCE) -o $(TARGET)
+	@mkdir -p $(dir $@)
+	$(NVCC) $(CXXFLAGS) $< -o $@
+	@echo "✅ Build complete: $@"
 
-# Clean rule for cleaning up the build
+# Clean rule
 clean:
+	@echo "🧹 Cleaning up..."
 	rm -f $(TARGET)
 
+# Force rebuild
+rebuild: clean all
+
 # Phony targets
-.PHONY: clean
+.PHONY: all clean rebuild
+
