@@ -70,8 +70,8 @@ void read_edgelist(std::string filename) {
     for(long i = 0; i < m; ++i) {
     	inFile >> u >> v;
     	if(u < v) {
-            u_out.push_back(u);
-            v_out.push_back(v);
+            u_arr.push_back(u);
+            v_arr.push_back(v);
         }
     }
 }
