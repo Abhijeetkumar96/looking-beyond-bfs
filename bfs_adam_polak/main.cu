@@ -269,6 +269,7 @@ void adam_polak_bfs(int n, long m, long* d_nodes, int* d_edges, int* u, int* v) 
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
     std::cout << "Execution time: " << duration.count() << " ms" << std::endl;
+    std::cout << "Tree depth (max level reached): " << level[0] << std::endl;
     
     CUDA_CHECK(cudaMemcpy(d_parent + root, &root, sizeof(int), cudaMemcpyHostToDevice), 
         "Failed to copy d_parent value");
