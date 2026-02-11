@@ -284,17 +284,15 @@ void adam_polak_bfs(int n, long m, long* d_nodes, int* d_edges, int* u, int* v) 
     // CUDA_CHECK(cudaDeviceSynchronize(), "Failed to synchronize");
     // std::cout << "Total elapsed time for adam mgpu_BFS: " << myTimer.getElapsedMilliseconds() << " ms" << std::endl;    
     
-    #ifdef DEBUG
-        // print d_distance to output_updated.txt
-        int* h_distance = (int*)malloc(n * sizeof(int));
-        cudaMemcpy(h_distance, d_distance, n * sizeof(int), cudaMemcpyDeviceToHost);
-        std::cout << "numNodes: " << n << "\n";
-        std::cout << "distance array:\n";
-        for(int i = 0; i < n; i++)
-            cout << h_distance[i] << " ";
-        std::cout << std::endl;
-        delete[] h_distance;
-    #endif
+    
+    // Copy distance array to host using vector and find maximum distance
+    std::vector<int> h_distance(n);
+    CUDA_CHECK(cudaMemcpy(h_distance.data(), d_distance, n * sizeof(int), cudaMemcpyDeviceToHost),
+        "Failed to copy distance array to host");
+    
+    int max_distance = *std::max_element(h_distance.begin(), h_distance.end());
+    
+    std::cout << "Depth of the produced spanning tree: " << max_distance << std::endl;
 
     CUDA_CHECK(cudaFree(d_nodefrontier),            "Error freeing d_nodefrontier");
     CUDA_CHECK(cudaFree(d_edgefrontier),            "Error freeing d_edgefrontier");
