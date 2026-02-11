@@ -19,5 +19,5 @@ do
   echo "=============================="
   echo "Running dataset: $g"
   echo "=============================="
-  bin/bfs_adam "$DATASET_DIR/$g.egr"
+  ./main "$DATASET_DIR/$g.egr"
 done
