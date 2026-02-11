@@ -1,25 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Directory containing graph files
 DATASET_DIR="/home/abhijeet/datasets/medium_datasets/ecl_graphs"
 
-# Path to executable
-EXEC="./main"
-
-# Check if executable exists
-if [[ ! -f "$EXEC" ]]; then
-    echo "Error: Executable $EXEC not found."
-    exit 1
-fi
-
-# Loop through each file in the dataset directory
-for file in "$DATASET_DIR"/*; do
-    if [[ -f "$file" ]]; then
-        echo "Running Gconn on: $file"
-        "$EXEC" "$file"
-        echo "------------------------------------------------------------"
-    fi
+for g in \
+  web-BerkStan \
+  as-Skitter \
+  higgs-twitter \
+  coPapersDBLP \
+  sx-stackoverflow \
+  road_usa \
+  soc-LiveJournal1 \
+  kron_g500-logn20 \
+  europe_osm \
+  kron_g500-logn21 \
+  com-Orkut \
+  uk-2002
+do
+  echo "=============================="
+  echo "Running dataset: $g"
+  echo "=============================="
+  bin/bfs_adam "$DATASET_DIR/$g.egr"
 done
-
-echo "All runs completed."
-
