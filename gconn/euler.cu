@@ -8,6 +8,24 @@
 
 // #define DEBUG
 
+__global__
+void compute_tree_depth_kernel(int* d_parent, int* d_depth, int N, int root) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    
+    if (idx < N) {
+        int node = idx;
+        int depth = 0;
+        
+        // Pointer jumping: follow parent pointers until we reach the root
+        while (node != root && depth < N) {
+            node = d_parent[node];
+            depth++;
+        }
+        
+        d_depth[idx] = depth;
+    }
+}
+
 __global__ 
 void create_dup_edges(
     int *d_edges_to, 
@@ -468,6 +486,35 @@ float cuda_euler_tour(
         d_last_occ.print("Last");
     #endif
 
+    // Compute tree depth using pointer jumping
+    d_vector<int> d_depth(N);
+    numBlocks = (N + blockSize - 1) / blockSize;
+    compute_tree_depth_kernel<<<numBlocks, blockSize>>>(
+        d_parent.get(), 
+        d_depth.get(), 
+        N, 
+        root);
+    CUDA_CHECK(cudaDeviceSynchronize(), "Failed to synchronize compute_tree_depth_kernel");
+
+    // Find maximum depth
+    int* d_max_depth = nullptr;
+    CUDA_CHECK(cudaMalloc(&d_max_depth, sizeof(int)), "Failed to allocate d_max_depth");
+    
+    void* d_temp_storage_reduce = nullptr;
+    size_t temp_storage_bytes_reduce = 0;
+    cub::DeviceReduce::Max(d_temp_storage_reduce, temp_storage_bytes_reduce, d_depth.get(), d_max_depth, N);
+    CUDA_CHECK(cudaMalloc(&d_temp_storage_reduce, temp_storage_bytes_reduce), "Failed to allocate temp storage for reduce");
+    cub::DeviceReduce::Max(d_temp_storage_reduce, temp_storage_bytes_reduce, d_depth.get(), d_max_depth, N);
+    CUDA_CHECK(cudaDeviceSynchronize(), "Failed to synchronize");
+
+    int h_max_depth = 0;
+    CUDA_CHECK(cudaMemcpy(&h_max_depth, d_max_depth, sizeof(int), cudaMemcpyDeviceToHost), "Failed to copy max depth to host");
+
+    std::cout << "Tree depth (maximum distance from root): " << h_max_depth << std::endl;
+
+    CUDA_CHECK(cudaFree(d_max_depth), "Failed to free d_max_depth");
+    CUDA_CHECK(cudaFree(d_temp_storage_reduce), "Failed to free d_temp_storage_reduce");
+    
     // Free pinned host memory.
     CUDA_CHECK(cudaFreeHost(notAllDone), "Failed to free notAllDone");
 
