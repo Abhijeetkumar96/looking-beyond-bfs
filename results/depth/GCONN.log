@@ -1,0 +1,85 @@
+GCONN:
+==============================
+Running dataset: web-BerkStan
+==============================
+Number of vertices: 685230
+Number of edges: 6650145
+Tree depth (maximum distance from root): 971
+GCONN took: 1.14483 ms
+==============================
+Running dataset: as-Skitter
+==============================
+Number of vertices: 1696415
+Number of edges: 11096053
+Tree depth (maximum distance from root): 756
+GCONN took: 2.41664 ms
+==============================
+Running dataset: higgs-twitter
+==============================
+Number of vertices: 456626
+Number of edges: 12508568
+Tree depth (maximum distance from root): 156
+GCONN took: 1.06582 ms
+==============================
+Running dataset: coPapersDBLP
+==============================
+Number of vertices: 540486
+Number of edges: 15245729
+Tree depth (maximum distance from root): 60
+GCONN took: 1.06813 ms
+==============================
+Running dataset: sx-stackoverflow
+==============================
+Number of vertices: 2601977
+Number of edges: 28207097
+Tree depth (maximum distance from root): 23579
+GCONN took: 6.00675 ms
+==============================
+Running dataset: road_usa
+==============================
+Number of vertices: 23947347
+Number of edges: 28854312
+Tree depth (maximum distance from root): 40790
+GCONN took: 51.4579 ms
+==============================
+Running dataset: soc-LiveJournal1
+==============================
+Number of vertices: 4847571
+Number of edges: 42853112
+Tree depth (maximum distance from root): 1876
+GCONN took: 10.1684 ms
+==============================
+Running dataset: kron_g500-logn20
+==============================
+Number of vertices: 1048576
+Number of edges: 44872781
+Tree depth (maximum distance from root): 253379
+GCONN took: 19.3657 ms
+==============================
+Running dataset: europe_osm
+==============================
+Number of vertices: 50912018
+Number of edges: 54054660
+Tree depth (maximum distance from root): 59347
+GCONN took: 114.359 ms
+==============================
+Running dataset: kron_g500-logn21
+==============================
+Number of vertices: 2097152
+Number of edges: 91594090
+Tree depth (maximum distance from root): 553158
+GCONN took: 30.5889 ms
+==============================
+Running dataset: com-Orkut
+==============================
+Number of vertices: 3072441
+Number of edges: 117185083
+Tree depth (maximum distance from root): 32
+GCONN took: 6.59242 ms
+==============================
+Running dataset: uk-2002
+==============================
+Number of vertices: 18520486
+Number of edges: 261825616
+Tree depth (maximum distance from root): 38358
+GCONN took: 46.6608 ms

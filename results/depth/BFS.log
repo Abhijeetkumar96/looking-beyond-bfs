@@ -1,0 +1,85 @@
+BFS:
+==============================
+Running dataset: web-BerkStan
+==============================
+numVert: 685230 and numEdges: 13300290
+Execution time: 66 ms
+Tree depth (max level reached): 974
+Depth of the produced spanning tree: 973
+==============================
+Running dataset: as-Skitter
+==============================
+numVert: 1696415 and numEdges: 22192106
+Execution time: 51 ms
+Tree depth (max level reached): 758
+Depth of the produced spanning tree: 757
+==============================
+Running dataset: higgs-twitter
+==============================
+numVert: 456626 and numEdges: 25017136
+Execution time: 14 ms
+Tree depth (max level reached): 158
+Depth of the produced spanning tree: 157
+==============================
+Running dataset: coPapersDBLP
+==============================
+numVert: 540486 and numEdges: 30491458
+Execution time: 5 ms
+Tree depth (max level reached): 15
+Depth of the produced spanning tree: 14
+==============================
+Running dataset: sx-stackoverflow
+==============================
+numVert: 2601977 and numEdges: 56414194
+Execution time: 1450 ms
+Tree depth (max level reached): 23582
+Depth of the produced spanning tree: 23581
+==============================
+Running dataset: road_usa
+==============================
+numVert: 23947347 and numEdges: 57708624
+Execution time: 510 ms
+Tree depth (max level reached): 6144
+Depth of the produced spanning tree: 6143
+==============================
+Running dataset: soc-LiveJournal1
+==============================
+numVert: 4847571 and numEdges: 85706224
+Execution time: 130 ms
+Tree depth (max level reached): 1878
+Depth of the produced spanning tree: 1877
+==============================
+Running dataset: kron_g500-logn20
+==============================
+numVert: 1048576 and numEdges: 89745562
+Execution time: 15505 ms
+Tree depth (max level reached): 253379
+Depth of the produced spanning tree: 253378
+==============================
+Running dataset: europe_osm
+==============================
+numVert: 50912018 and numEdges: 108109320
+Execution time: 1609 ms
+Tree depth (max level reached): 19933
+Depth of the produced spanning tree: 19932
+==============================
+Running dataset: kron_g500-logn21
+==============================
+numVert: 2097152 and numEdges: 183188180
+Execution time: 33767 ms
+Tree depth (max level reached): 553162
+Depth of the produced spanning tree: 553161
+==============================
+Running dataset: com-Orkut
+==============================
+numVert: 3072441 and numEdges: 234370166
+Execution time: 36 ms
+Tree depth (max level reached): 7
+Depth of the produced spanning tree: 6
+==============================
+Running dataset: uk-2002
+==============================
+numVert: 18520486 and numEdges: 523651232
+Execution time: 2433 ms
+Tree depth (max level reached): 38361
+Depth of the produced spanning tree: 38360
